@@ -77,7 +77,7 @@ network.m1 = edict()
 network.m1.net_name = 'fmobilenet'
 network.m1.emb_size = 256
 network.m1.net_output = 'GDC'
-network.m1.net_multiplier = 1.0
+network.m1.net_multiplier = 0.5
 
 network.m05 = edict()
 network.m05.net_name = 'fmobilenet'
@@ -110,7 +110,7 @@ dataset.emore = edict()
 dataset.emore.dataset = 'emore'
 dataset.emore.dataset_path = '../datasets/faces_emore'
 dataset.emore.num_classes = 85742
-dataset.emore.image_shape = (112,112,3)
+dataset.emore.image_shape = (112,112,1)
 dataset.emore.val_targets = ['lfw', 'cfp_fp', 'agedb_30']
 
 dataset.retina = edict()
