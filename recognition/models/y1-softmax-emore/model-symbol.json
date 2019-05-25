@@ -4152,7 +4152,11 @@
     {
       "op": "null", 
       "name": "pre_fc1_weight", 
-      "attrs": {"num_hidden": "128"}, 
+      "attrs": {
+        "__lr_mult__": "1.0", 
+        "__shape__": "(128, 512)", 
+        "__wd_mult__": "10.0"
+      }, 
       "inputs": []
     }, 
     {
@@ -4943,5 +4947,5 @@
     532
   ], 
   "heads": [[431, 0, 0]], 
-  "attrs": {"mxnet_version": ["int", 10301]}
+  "attrs": {"mxnet_version": ["int", 10000]}
 }
