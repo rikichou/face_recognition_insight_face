@@ -182,7 +182,8 @@ def train_net(args):
     print('Called with argument:', args, config)
     data_shape = (args.image_channel,image_size[0],image_size[1])
     mean = None
-
+    arg_params = None
+    aux_params = None
     begin_epoch = 0
     if len(args.pretrained)==0:
       arg_params = None
@@ -210,6 +211,8 @@ def train_net(args):
         symbol        = sym,
     )
     model.bind([("data", (args.batch_size, args.image_channel, image_size[0], image_size[1]))], [("softmax_label", (args.batch_size,))])
+    arg_params['pre_fc1_weight'] = arg_params.pop('fc1_weight')
+    model.set_params(arg_params, aux_params, allow_missing=True)
     val_dataiter = None
 
     if config.loss_name.find('triplet')>=0:

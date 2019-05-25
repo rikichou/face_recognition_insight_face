@@ -254,7 +254,7 @@ class FaceImageIter(io.DataIter):
         """Checks if the input data shape is valid"""
         if not len(data_shape) == 3:
             raise ValueError('data_shape should have length 3, with dimensions CxHxW')
-        if not data_shape[0] == 1:
+        if not data_shape[0] == 3:
             raise ValueError('This iterator expects inputs to have 3 channels.')
 
     def check_valid_image(self, data):
@@ -265,7 +265,12 @@ class FaceImageIter(io.DataIter):
     def imdecode(self, s):
         """Decodes a string or byte string to an NDArray.
         See mx.img.imdecode for more details."""
-        img = mx.image.imdecode(s,0) #mx.ndarray
+        #img = mx.image.imdecode(s) #mx.ndarray
+        imgt = mx.image.imdecode(_bin,0)
+    	img = mx.nd.ones((imgt.shape[0], imgt.shape[1],3))
+    	img[:,:,0] = imgt[:,:,0]
+    	img[:,:,1] = imgt[:,:,0]
+    	img[:,:,2] = imgt[:,:,0]
         return img
 
     def read_image(self, fname):

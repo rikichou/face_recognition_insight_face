@@ -183,11 +183,15 @@ def load_bin(path, image_size):
   bins, issame_list = pickle.load(open(path, 'rb'))
   data_list = []
   for flip in [0,1]:
-    data = nd.empty((len(issame_list)*2, 1, image_size[0], image_size[1]))
+    data = nd.empty((len(issame_list)*2, 3, image_size[0], image_size[1]))
     data_list.append(data)
   for i in xrange(len(issame_list)*2):
     _bin = bins[i]
-    img = mx.image.imdecode(_bin,0)
+    imgt = mx.image.imdecode(_bin,0)
+    img = mx.nd.ones((imgt.shape[0], imgt.shape[1],3))
+    img[:,:,0] = imgt[:,:,0]
+    img[:,:,1] = imgt[:,:,0]
+    img[:,:,2] = imgt[:,:,0]
     if img.shape[1]!=image_size[0]:
       img = mx.image.resize_short(img, image_size[0])
     img = nd.transpose(img, axes=(2, 0, 1))

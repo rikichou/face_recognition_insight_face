@@ -110,7 +110,7 @@ dataset.emore = edict()
 dataset.emore.dataset = 'emore'
 dataset.emore.dataset_path = '../datasets/faces_emore'
 dataset.emore.num_classes = 85742
-dataset.emore.image_shape = (112,112,1)
+dataset.emore.image_shape = (112,112,3)
 dataset.emore.val_targets = ['lfw', 'cfp_fp', 'agedb_30']
 
 dataset.retina = edict()
@@ -176,7 +176,7 @@ default = edict()
 # default network
 default.network = 'r100'
 default.pretrained = ''
-default.pretrained_epoch = 1
+default.pretrained_epoch = 0
 # default dataset
 default.dataset = 'emore'
 default.loss = 'arcface'
