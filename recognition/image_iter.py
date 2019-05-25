@@ -266,7 +266,7 @@ class FaceImageIter(io.DataIter):
         """Decodes a string or byte string to an NDArray.
         See mx.img.imdecode for more details."""
         #img = mx.image.imdecode(s) #mx.ndarray
-        imgt = mx.image.imdecode(_bin,0)
+        imgt = mx.image.imdecode(s,0)
     	img = mx.nd.ones((imgt.shape[0], imgt.shape[1],3))
     	img[:,:,0] = imgt[:,:,0]
     	img[:,:,1] = imgt[:,:,0]
